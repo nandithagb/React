@@ -21,10 +21,21 @@ export default function TextForm(props) {
     let newtext=text.split('').reverse().join('');
     settext(newtext);
   };
+  const handleCopy=()=>{
+    var text=document.getElementById("mybox");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+
+  }
+  const handleExtra=()=>{
+    let newText=text.split(/[ ]+/);
+    settext(newText.join(" "))
+  }
   const handleOnChange = (event) => {
     // console.log("on change");
     settext(event.target.value);
   };
+
   const [text, settext] = useState("Enter text here");
   // text="new text"//wrong way to change the state
   // settext=("new text") //correct way to change the state
@@ -52,6 +63,12 @@ export default function TextForm(props) {
       </button>
       <button className="btn btn-primary mx-1" onClick={handleReverseClick}>
         Reverse the word
+      </button>
+      <button className="btn btn-primary mx-1" onClick={handleCopy}>
+        Copy Text
+      </button>
+      <button className="btn btn-primary mx-1" onClick={handleExtra}>
+        Remove extra space
       </button>
     </div>
     <div className="container my-2">
