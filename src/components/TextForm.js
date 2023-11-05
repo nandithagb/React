@@ -27,10 +27,9 @@ export default function TextForm(props) {
     props.showAlert("reversing a string","success");
   };
   const handleCopy=()=>{
-    var text=document.getElementById("mybox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    
+    navigator.clipboard.writeText(text);
+  
     props.showAlert("copied to clipboard","success");
   }
   const handleExtra=()=>{
@@ -87,7 +86,7 @@ export default function TextForm(props) {
     <div className="container my-2" style={{color:props.mode==='dark'?'white':'#042743'}}>
         <h2>Your text  summary </h2>
         <p>
-            {text.split (" ").filter((element)=>{return element.length!==0}).length} words and {text.length} charcters
+            {text.split (/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} charcters
         </p>
         <p>
             {0.008*text.split (" ").filter((element)=>{return element.length!==0}).length} Minutes Read
