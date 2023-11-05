@@ -1,73 +1,62 @@
-import React ,{useState} from 'react'
+import React  from 'react'
 
-export default function About() {
-    const[mystyle,setMyStyle]=useState(
-    {
-        color:'black',
-        backgroundColor:'white',
-    })
-    const[btntext,setbtnText]=useState("enable dark mode")
-     const toggleStyle=()=>{
-        if(mystyle.color==='black'){
-            setMyStyle({
-                color:'white',
-                backgroundColor:'black',
-                border:'1px solid white'
-            })
-            setbtnText("enable light mode")
-        }
-        else{
-            setMyStyle({
-                color:'black',
-                backgroundColor:'white',
-                border:'1px solid black'
-            })
-            setbtnText("enable dark mode")
-        }
+export default function About(props) {
+    // const[mystyle,setMyStyle]=useState(
+    // {
+    //     color:'black',
+    //     backgroundColor:'white',
+    // })
+    let mystyle={
+color:props.mode==='dark'?'white':'#042743',
+backgroundColor:props.mode==='dark'?'rgb(36 74 104)':'white',
+border:'2px solid',
+borderColor:props.mode==='dark'?'white':'#042743',
     }
+
   return (
-    <div className='container' style={mystyle}>
+    <div className='container' style={{color:props.mode==='dark'?'white':'#042743' }}>
         <h1 className='my-3'>About Us</h1>
       <div className="accordion" id="accordionExample">
   <div className="accordion-item">
     <h2 className="accordion-header">
       <button className="accordion-button"  style={mystyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Accordion Item #1
+        Analyze your text
       </button>
     </h2>
     <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div className="accordion-body" style={mystyle} >
-        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+      Text analysis (TA) is a machine learning technique used to automatically extract valuable insights from unstructured text data. Companies use text analysis tools to quickly digest online data and documents, and transform them into actionable insights.      </div>
     </div>
   </div>
   <div className="accordion-item" style={mystyle}>
     <h2 className="accordion-header">
       <button className="accordion-button collapsed" style={mystyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
+    Free to use
       </button>
     </h2>
     <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div className="accordion-body" style={mystyle}>
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+      What is free text analysis?
+The purpose of Text Analysis is to create 
+structured data out of free text content. 
+The process can be thought of as slicing and dicing heaps of unstructured,
+ heterogeneous documents into easy-to-manage and interpret data pieces. </div>
     </div>
   </div>
   <div className="accordion-item">
     <h2 className="accordion-header">
       <button className="accordion-button collapsed" style={mystyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
+       Browse capabilities
       </button>
     </h2>
     <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div className="accordion-body" style={mystyle}>
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+      When a WebDriver session is created it returns a set of capabilities describing the negotiated, 
+      effective capabilities of the session. Some of the capabilities included in this set are standard and shared between all browsers, 
+      but the set may also contain browser-specific capabilities and these are always prefixed. </div>
     </div>
   </div>
 </div>
-<div className="container my-3"><button onClick={toggleStyle} type="button" className="btn btn-primary">{btntext}</button></div>
-
     </div>
   )
 }
